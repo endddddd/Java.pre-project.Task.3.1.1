@@ -1,0 +1,30 @@
+
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>User info</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/table.css}"/>
+</head>
+<body>
+
+<form>
+    <table>
+    <thead>
+    <tr>
+        <th>Имя</th>
+        <th>Пароль</th>
+        <th>Номер Пользователя</th>
+
+    </tr>
+    </thead>
+
+        <tr th:each ="user : ${user}">
+            <td th:utext="${user.username}"></td>
+            <td th:utext="${user.password}"></td>
+            <td th:utext="${user.id}"></td>
+
+    </tr>
+    <thead> <tr><th><input formaction="/logout" formmethod="get" type="submit" value="Выйти из системы"></th></tr></thead>
+</table>
+</form>
+</body>
+</html>

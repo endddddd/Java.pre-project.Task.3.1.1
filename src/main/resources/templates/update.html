@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Spring5</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/table.css}"/>
+
+</head>
+<body>
+
+</hr>
+<div align="center"><h2>Изменить Данные:</h2> </div>
+<form>
+    <table>
+        <thead>
+
+
+    <tr th:each ="user : ${users}">
+        <td th:utext="${user.username}"></td>
+
+        <td th:utext="${user.password}"></td>
+        <td th:utext="${user.id}"></td>
+
+</tr>
+        </thead>
+        <tbody>
+        <tr >
+            <td>
+               <form th:each ="user : ${users}">
+                <label><input type="text" name="name"  /></label>
+                <input type="hidden" name="id" th:value="${user.id}">
+                <button formaction="/admin/update" formmethod="post" type="submit" name="password"  th:value="${user.password}">Изменить Имя
+                </button>
+               </form>
+            </td>
+            <td>
+                <form th:each ="user : ${users}">
+                <label> <input type="text" name="password"/></label>
+                <input type="hidden" name="id" th:value="${user.id}">
+                <button formaction="/admin/update" formmethod="post" type="submit" name="name" th:value="${user.username}">Изменить Пароль
+                </button>
+                </form>
+            </td>
+            <td>
+                <input formaction="/admin/table" formmethod="get" value="Назад в Список" type="submit">
+            </td>
+        </tr>
+        </tbody>
+        <thead> <th><input formaction="/logout" formmethod="get" type="submit" value="Выйти из системы"></th></thead>
+
+    </table>
+</form>
+
+</body>
+</html>
